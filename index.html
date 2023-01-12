@@ -13,7 +13,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app">
+            <div class="overview">
         <h1>
             Poreč 
         </h1>
@@ -25,10 +27,15 @@
                 Partly Cloudy
             </li>
         </ul>
+        </div>
         <div class="row">
             <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""Partly Cloudy/>
-                12°C | F
+                <div class="d-flex weather-temperature">
+                <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="Partly Cloudy" class/>
+                <div>
+                <strong id="temperature">12</strong><span class="units">°C | <a href="#">°F</a></span>
+                </div>
+                </div>
             </div>
             <div class="col-6">
                 <ul>
@@ -44,11 +51,12 @@
                 </ul>
             </div>
             </div>
-            <small>
+           
+        </div>
+         <small>
                 <a href="https://github.com/kobrovac/vanilla-weather-app" target="_blank">Open-source code</a> by Karin Obrovac
             </small>
-        </div>
-        
+            </div>
     </div>
 <script src="src/app.js"></script>
 </body>
