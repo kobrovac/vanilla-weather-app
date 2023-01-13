@@ -14,7 +14,8 @@ function formatDate(timestamp) {
     return `${day}, ${hours}:${minutes}`;
 }
 
-function displayForecast(){
+function displayForecast(response){
+    console.log(response.data.daily);
     let forecastElement = document.querySelector("#forecast");
 
     let days = ["Fri", "Sat", "Sun", "Mon"];
@@ -44,6 +45,13 @@ function displayForecast(){
     forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+    let apiKey = "5aadb231294f844bcda7e81c8o0bct7f";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+    
+    axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
     let temperatureElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city")
@@ -65,6 +73,8 @@ function displayTemperature(response) {
     dateElement.innerHTML = formatDate(response.data.time * 1000);
     iconElement.setAttribute("src", response.data.condition.icon_url);
     iconElement.setAttribute("alt", response.data.condition.description);
+
+    getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -110,4 +120,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
 search("Pula");
-displayForecast();
